@@ -1,0 +1,39 @@
+package com.dicoding.picodiploma.mymoviecatalogue.helper
+
+import android.database.Cursor
+import com.dicoding.picodiploma.mymoviecatalogue.db.DatabaseContract
+import com.dicoding.picodiploma.mymoviecatalogue.entity.Favourite
+
+object MappingHelper {
+    fun mapCursorToArrayList(favCursor: Cursor): ArrayList<Favourite> {
+        val favList = ArrayList<Favourite>()
+        while (favCursor.moveToNext()) {
+            val id =
+                favCursor.getString(favCursor.getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.ID))
+            val backdrop =
+                favCursor.getString(favCursor.getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.BACKDROP))
+            val title =
+                favCursor.getString(favCursor.getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.TITLE))
+            val release =
+                favCursor.getString(favCursor.getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.RELEASE))
+            val rating =
+                favCursor.getString(favCursor.getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.RATING))
+            val date =
+                favCursor.getString(favCursor.getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.DATE))
+            val category =
+                favCursor.getString(favCursor.getColumnIndexOrThrow(DatabaseContract.FavouriteColumns.CATEGORY))
+            favList.add(
+                Favourite(
+                    id + "",
+                    backdrop + "",
+                    title + "",
+                    release + "",
+                    rating + "",
+                    date + "",
+                    category + ""
+                )
+            )
+        }
+        return favList
+    }
+}

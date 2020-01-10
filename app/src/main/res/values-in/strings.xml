@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyMovieCatalogue</string>
+
+    <string name="change_language_settings">Pengaturan Bahasa</string>
+
+    <string name="language">id-ID</string>
+
+    <string name="minute">Menit</string>
+
+    <string name="home">Beranda</string>
+    <string name="tab_text_1">Film</string>
+    <string name="tab_text_2">Tayangan TV</string>
+    <string name="about">Tentang</string>
+
+    <string name="label_title">Judul</string>
+    <string name="label_genre">Genre</string>
+    <string name="label_duration">Durasi</string>
+    <string name="label_popularity">Popularitas</string>
+    <string name="label_release">Tahun Rilis</string>
+    <string name="label_rating">Nilai</string>
+    <string name="label_overview">Deskripsi</string>
+    <string name="label_review">Ulasan</string>
+    <string name="label_country">Negara</string>
+    <string name="label_seasons">Musim</string>
+    <string name="label_episodes">Episode</string>
+
+    <string name="author_review">Ulasan Penulis</string>
+    <string name="review_by">Ulasan dari</string>
+    <string name="content">Konten ulasan</string>
+    <string name="null_review">Ulasan tidak tersedia</string>
+    <string name="detail_review">Detail Ulasan</string>
+
+    <string name="trailer_na">Trailer tidak tersedia</string>
+
+    <string name="conn_problem_title">Koneksi Bermasalah</string>
+    <string name="conn_problem_message">Mohon periksa Koneksi Internet anda</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="null_overview">Deskripsi tidak tersedia. API belum memiliki deskripsi untuk bahasa yang digunakan oleh perangkat Anda, coba pilih tayangan lain atau ubah pengaturan bahasa perangkat Anda.</string>
+    <string name="favourite">Favorit</string>
+    <string name="fav_movies_na">Anda belum menambahkan Film favorit</string>
+    <string name="fav_tv_na">Anda belum menambahkan Tayangan TV favorit</string>
+    <string name="add_favourite">Ditambahkan ke Favorit</string>
+    <string name="remove_favourite">Telah dihapus dari favorit</string>
+    <string name="failed_add_favourite">Gagal menbahkan ke Favorit</string>
+    <string name="failed_remove_favourite">Gagal menghapus dari Favorit</string>
+    <string name="search_hint">Masukkan kata kunci..</string>
+    <string name="add_widget">Add widget</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="reminder_settings">Pengaturan Pengingat</string>
+    <string name="reminder">Pengingat</string>
+    <string name="title_daily">Pengingat Harian</string>
+    <string name="title_release">Pengingat Rilis</string>
+    <string name="desc_daily">Pengingat agar kembali ke aplikasi</string>
+    <string name="desc_release">Pengingat untuk film yang rilis hari ini</string>
+    <string name="reminder_daily_on">Pengingat harian AKTIF</string>
+    <string name="reminder_release_on">Pengingat rilis AKTIF</string>
+    <string name="reminder_off">Pengingat telah dinonaktifkan</string>
+    <string name="message_daily">Kembali ke aplikasi</string>
+    <string name="message_release">Rilis hari ini!!</string>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">MyMovieCatalogue</string>
+
+    <string name="change_language_settings">Change Language Settings</string>
+
+    <string name="language">en-US</string>
+
+    <string name="minute">Minute</string>
+
+    <string name="home">Home</string>
+    <string name="tab_text_1">Movies</string>
+    <string name="tab_text_2">TV Show</string>
+    <string name="about">About</string>
+
+    <string name="label_title">Title</string>
+    <string name="label_genre">Genre</string>
+    <string name="label_duration">Runtime</string>
+    <string name="label_popularity">Popularity</string>
+    <string name="label_release">Release</string>
+    <string name="label_rating">Rating</string>
+    <string name="label_overview">Overview</string>
+    <string name="label_review">Review</string>
+    <string name="label_country">Country</string>
+    <string name="label_seasons">Seasons</string>
+    <string name="label_episodes">Episodes</string>
+
+    <string name="author_review">Author Review</string>
+    <string name="review_by">A review by</string>
+    <string name="content">Review Content</string>
+    <string name="null_review">No review available</string>
+    <string name="detail_review">Detail Review</string>
+
+    <string name="trailer_na">Trailer Not Available</string>
+
+    <string name="conn_problem_title">Connection Problem</string>
+    <string name="conn_problem_message">Please check your Internet Connection</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="null_overview">The overview are not available. The API doesn\'t have a description for the language used by your device yet, try selecting another display or changing your device\'s language settings.</string>
+    <string name="favourite">Favourite</string>
+    <string name="fav_movies_na">You haven\'t added a favourite Movie yet</string>
+    <string name="fav_tv_na">You haven\'t added a favourite TV Show yet</string>
+    <string name="add_favourite">Added to Favourite</string>
+    <string name="remove_favourite">Removed from Favourite</string>
+    <string name="failed_add_favourite">Failed to add Favourite</string>
+    <string name="failed_remove_favourite">Failed to remove Favourite</string>
+    <string name="search_hint">Input keyword..</string>
+    <string name="add_widget">Add widget</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="reminder_settings">Reminder Settings</string>
+    <string name="reminder">Reminder</string>
+    <string name="desc_daily">Reminder for return to the app</string>
+    <string name="desc_release">Reminder showing the movie that released today</string>
+    <string name="title_daily">Daily Reminder</string>
+    <string name="title_release">Release Reminder</string>
+    <string name="reminder_daily_on">Daily Reminder are turned ON</string>
+    <string name="reminder_release_on">Release Reminder are turned ON</string>
+    <string name="reminder_off">Reminder has been turned OFF</string>
+    <string name="message_daily">Return to the app</string>
+    <string name="message_release">Released today!!</string>
+</resources>
