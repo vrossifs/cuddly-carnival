@@ -19,7 +19,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.picodiploma.mymoviecatalogue.db.DatabaseContract
 import com.dicoding.picodiploma.mymoviecatalogue.db.DatabaseContract.FavouriteColumns.Companion.CONTENT_URI
-import com.dicoding.picodiploma.mymoviecatalogue.db.FavouriteHelper
 import com.dicoding.picodiploma.mymoviecatalogue.entity.Data
 import com.dicoding.picodiploma.mymoviecatalogue.entity.Favourite
 import com.dicoding.picodiploma.mymoviecatalogue.favourite.FavouriteActivity
@@ -36,7 +35,6 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var adapter: ReviewAdapter
     private lateinit var mainViewModel: MainViewModel
     private lateinit var mainActivity: MainActivity
-    private lateinit var favouriteHelper: FavouriteHelper
     private lateinit var uriWithId: Uri
     private var favourite: Favourite? = null
 
@@ -60,8 +58,6 @@ class DetailActivity : AppCompatActivity() {
 
         mainActivity = MainActivity()
         mainActivity.deleteCache(this)
-
-        favouriteHelper = FavouriteHelper.getInstance(this)
 
         supportActionBar?.title =
             resources.getString(R.string.about) + " " + intent.getStringExtra(PREVIOUS)
