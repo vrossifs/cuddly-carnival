@@ -17,7 +17,7 @@ internal class DatabaseHelper(context: Context?) :
 
     companion object {
 
-        private const val DATABASE_NAME = "dbsubmissionapp"
+        private const val DATABASE_NAME = "dbmoviecatalogue"
 
         private const val DATABASE_VERSION = 1
 

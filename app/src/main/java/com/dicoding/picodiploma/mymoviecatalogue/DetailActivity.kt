@@ -18,10 +18,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.dicoding.picodiploma.mymoviecatalogue.db.DatabaseContract
+import com.dicoding.picodiploma.mymoviecatalogue.db.DatabaseContract.FavouriteColumns.Companion.CONTENT_URI
 import com.dicoding.picodiploma.mymoviecatalogue.db.FavouriteHelper
 import com.dicoding.picodiploma.mymoviecatalogue.entity.Data
 import com.dicoding.picodiploma.mymoviecatalogue.entity.Favourite
 import com.dicoding.picodiploma.mymoviecatalogue.favourite.FavouriteActivity
+import com.dicoding.picodiploma.mymoviecatalogue.helper.MappingHelper
 import kotlinx.android.synthetic.main.activity_detail.*
 import kotlinx.android.synthetic.main.detail.*
 import kotlinx.android.synthetic.main.overview.*
@@ -30,12 +32,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.HashMap
 
-
 class DetailActivity : AppCompatActivity() {
     private lateinit var adapter: ReviewAdapter
     private lateinit var mainViewModel: MainViewModel
     private lateinit var mainActivity: MainActivity
     private lateinit var favouriteHelper: FavouriteHelper
+    private lateinit var uriWithId: Uri
     private var favourite: Favourite? = null
 
     companion object {
@@ -160,8 +162,21 @@ class DetailActivity : AppCompatActivity() {
         values.put(DatabaseContract.FavouriteColumns.DATE, getCurrentDate())
         values.put(DatabaseContract.FavouriteColumns.CATEGORY, hashMap["category"])
 
-        val dbId = favouriteHelper.SelectIdById(id_movie)
-        if (dbId.count > 0) {
+        uriWithId = Uri.parse("$CONTENT_URI/$id_movie")
+        val cursor = contentResolver.query(
+            uriWithId,
+            null,
+            null,
+            null,
+            null
+        )
+
+        if (cursor != null && cursor.moveToFirst()) {
+            favourite = MappingHelper.mapCursorToObject(cursor)
+            cursor.close()
+        }
+
+        if (favourite?.id == id_movie) {
             myToggleButton.setBackgroundDrawable(
                 ContextCompat.getDrawable(
                     applicationContext,
@@ -170,55 +185,35 @@ class DetailActivity : AppCompatActivity() {
             )
             myToggleButton.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
-                    val result = favouriteHelper.deleteById(id_movie).toLong()
-                    if (result > 0) {
-                        myToggleButton.setBackgroundDrawable(
-                            ContextCompat.getDrawable(
-                                applicationContext,
-                                R.drawable.ic_favorite_off
-                            )
+                    // Gunakan uriWithId dari intent activity ini
+                    // content://com.dicoding.picodiploma.mynotesapp/note/id
+                    uriWithId = Uri.parse("$CONTENT_URI/$id_movie")
+                    contentResolver.delete(uriWithId, null, null)
+                    myToggleButton.setBackgroundDrawable(
+                        ContextCompat.getDrawable(
+                            applicationContext,
+                            R.drawable.ic_favorite_off
                         )
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.remove_favourite),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.failed_remove_favourite),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    )
+                    Toast.makeText(
+                        this,
+                        resources.getString(R.string.remove_favourite),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    val result = favouriteHelper.insert(values)
-                    if (result > 0) {
-                        favourite?.id = id_movie
-                        favourite?.backdrop = hashMap["backdrop"]
-                        favourite?.title = hashMap["judul"]
-                        favourite?.rating = hashMap["rating"]
-                        favourite?.release = hashMap["tahun"]
-                        favourite?.date = getCurrentDate()
-                        favourite?.category = hashMap["category"]
+                    contentResolver.insert(CONTENT_URI, values)
 
-                        myToggleButton.setBackgroundDrawable(
-                            ContextCompat.getDrawable(
-                                applicationContext,
-                                R.drawable.ic_favorite_on
-                            )
+                    myToggleButton.setBackgroundDrawable(
+                        ContextCompat.getDrawable(
+                            applicationContext,
+                            R.drawable.ic_favorite_on
                         )
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.add_favourite),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.failed_add_favourite),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    )
+                    Toast.makeText(
+                        this,
+                        resources.getString(R.string.add_favourite),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
         } else {
@@ -230,55 +225,35 @@ class DetailActivity : AppCompatActivity() {
             )
             myToggleButton.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
                 if (isChecked) {
-                    val result = favouriteHelper.insert(values)
-                    if (result > 0) {
-                        favourite?.id = id_movie
-                        favourite?.backdrop = hashMap["backdrop"]
-                        favourite?.title = hashMap["judul"]
-                        favourite?.rating = hashMap["rating"]
-                        favourite?.release = hashMap["tahun"]
-                        favourite?.date = getCurrentDate()
-                        favourite?.category = hashMap["category"]
+                    contentResolver.insert(CONTENT_URI, values)
 
-                        myToggleButton.setBackgroundDrawable(
-                            ContextCompat.getDrawable(
-                                applicationContext,
-                                R.drawable.ic_favorite_on
-                            )
+                    myToggleButton.setBackgroundDrawable(
+                        ContextCompat.getDrawable(
+                            applicationContext,
+                            R.drawable.ic_favorite_on
                         )
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.add_favourite),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.failed_add_favourite),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    )
+                    Toast.makeText(
+                        this,
+                        resources.getString(R.string.add_favourite),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 } else {
-                    val result = favouriteHelper.deleteById(id_movie).toLong()
-                    if (result > 0) {
-                        myToggleButton.setBackgroundDrawable(
-                            ContextCompat.getDrawable(
-                                applicationContext,
-                                R.drawable.ic_favorite_off
-                            )
+                    // Gunakan uriWithId dari intent activity ini
+                    // content://com.dicoding.picodiploma.mynotesapp/note/id
+                    uriWithId = Uri.parse("$CONTENT_URI/$id_movie")
+                    contentResolver.delete(uriWithId, null, null)
+                    myToggleButton.setBackgroundDrawable(
+                        ContextCompat.getDrawable(
+                            applicationContext,
+                            R.drawable.ic_favorite_off
                         )
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.remove_favourite),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    } else {
-                        Toast.makeText(
-                            this,
-                            resources.getString(R.string.failed_remove_favourite),
-                            Toast.LENGTH_SHORT
-                        ).show()
-                    }
+                    )
+                    Toast.makeText(
+                        this,
+                        resources.getString(R.string.remove_favourite),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             })
         }

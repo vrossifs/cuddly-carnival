@@ -32,7 +32,7 @@ internal class StackRemoteViewsFactory(private val mContext: Context) :
         backdrop.clear()
 
         favouriteHelper = FavouriteHelper.getInstance(mContext)
-        val cursor = favouriteHelper.queryByCategory("Movies")
+        val cursor = favouriteHelper.queryAll()
 
         if (cursor.moveToFirst()) {
             do {

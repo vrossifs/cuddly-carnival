@@ -1,8 +1,8 @@
 package com.dicoding.picodiploma.mymoviecatalogue.favourite
 
-
 import android.app.Activity
 import android.content.Intent
+import android.database.Cursor
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +11,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dicoding.picodiploma.mymoviecatalogue.DetailActivity
 import com.dicoding.picodiploma.mymoviecatalogue.R
-import com.dicoding.picodiploma.mymoviecatalogue.db.FavouriteHelper
+import com.dicoding.picodiploma.mymoviecatalogue.db.DatabaseContract
 import com.dicoding.picodiploma.mymoviecatalogue.entity.Favourite
 import com.dicoding.picodiploma.mymoviecatalogue.helper.MappingHelper
 import kotlinx.android.synthetic.main.fragment_fav_tv.*
@@ -29,7 +29,6 @@ import kotlin.concurrent.timerTask
 class FavTvFragment : Fragment() {
 
     private lateinit var adapter: FavouriteAdapter
-    private lateinit var favouriteHelper: FavouriteHelper
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,8 +41,6 @@ class FavTvFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        favouriteHelper = FavouriteHelper.getInstance(requireContext())
 
         rvFavTv.layoutManager = LinearLayoutManager(requireContext())
         rvFavTv.setHasFixedSize(true)
@@ -60,10 +57,16 @@ class FavTvFragment : Fragment() {
     }
 
     private fun loadFavAsync() {
-        val cursor = favouriteHelper.queryByCategory("Tv")
         GlobalScope.launch(Dispatchers.Main) {
             val deferredFavourite = async(Dispatchers.IO) {
-                MappingHelper.mapCursorToArrayList(cursor)
+                val cursor = activity?.contentResolver?.query(
+                    DatabaseContract.FavouriteColumns.CONTENT_URI,
+                    null,
+                    null,
+                    null,
+                    null
+                ) as Cursor
+                MappingHelper.mapCursorToArrayList(cursor, "Tv")
             }
             val favourite = deferredFavourite.await()
             if (favourite.size > 0) {

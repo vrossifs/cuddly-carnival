@@ -44,8 +44,8 @@ class NotificationReceiver : BroadcastReceiver() {
 
     private fun getReminderTime(type: String): Calendar? {
         val calendar: Calendar = Calendar.getInstance()
-        calendar.set(Calendar.HOUR_OF_DAY, if (type == TYPE_DAILY) 21 else 21)
-        calendar.set(Calendar.MINUTE, if (type == TYPE_DAILY) 16 else 27)
+        calendar.set(Calendar.HOUR_OF_DAY, if (type == TYPE_DAILY) 7 else 8)
+        calendar.set(Calendar.MINUTE, if (type == TYPE_DAILY) 0 else 0)
         calendar.set(Calendar.SECOND, 0)
         if (calendar.before(Calendar.getInstance())) {
             calendar.add(Calendar.DATE, 1)
