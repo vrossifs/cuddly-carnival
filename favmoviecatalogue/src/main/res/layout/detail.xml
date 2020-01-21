@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="10dp">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guidline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <ImageView
+        android:id="@+id/poster"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:padding="10dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@id/guidline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/na" />
+
+    <TextView
+        android:id="@+id/label_genre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_genre"
+        app:layout_constraintBottom_toTopOf="@+id/tv_genre"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_genre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_genre"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/label_duration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/label_genre" />
+
+    <TextView
+        android:id="@+id/label_duration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_duration"
+        app:layout_constraintBottom_toTopOf="@+id/tv_durasi"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/tv_genre" />
+
+    <TextView
+        android:id="@+id/tv_durasi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_duration"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/label_release"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/label_duration" />
+
+    <TextView
+        android:id="@+id/label_release"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_release"
+        app:layout_constraintBottom_toTopOf="@+id/tv_tahun"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/tv_durasi" />
+
+    <TextView
+        android:id="@+id/tv_tahun"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_release"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/label_popularity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/label_release" />
+
+    <TextView
+        android:id="@+id/label_popularity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_popularity"
+        app:layout_constraintBottom_toTopOf="@+id/tv_popularity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/tv_tahun" />
+
+    <TextView
+        android:id="@+id/tv_popularity"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_popularity"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/label_country"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/label_popularity" />
+
+    <TextView
+        android:id="@+id/label_country"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_country"
+        app:layout_constraintBottom_toTopOf="@+id/tv_country"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/tv_popularity" />
+
+    <TextView
+        android:id="@+id/tv_country"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_country"
+        android:textColor="#000000"
+        android:textSize="17dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@id/poster"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@id/guidline"
+        app:layout_constraintTop_toBottomOf="@id/label_country" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

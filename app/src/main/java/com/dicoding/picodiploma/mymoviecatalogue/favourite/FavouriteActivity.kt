@@ -8,12 +8,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.dicoding.picodiploma.mymoviecatalogue.MainActivity
 import com.dicoding.picodiploma.mymoviecatalogue.R
-import com.dicoding.picodiploma.mymoviecatalogue.db.FavouriteHelper
 import com.dicoding.picodiploma.mymoviecatalogue.notification.ReminderActivity
 
 class FavouriteActivity : AppCompatActivity() {
-
-    private lateinit var favouriteHelper: FavouriteHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,9 +18,6 @@ class FavouriteActivity : AppCompatActivity() {
 
         supportActionBar?.title = resources.getString(R.string.favourite)
         supportActionBar?.elevation = 0f
-
-        favouriteHelper = FavouriteHelper.getInstance(this)
-        favouriteHelper.open()
 
         val mFragmentManager = supportFragmentManager
         val mFavFragment = FavouriteFragment()

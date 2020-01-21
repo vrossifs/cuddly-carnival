@@ -7,7 +7,6 @@ import android.provider.Settings
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.dicoding.picodiploma.mymoviecatalogue.db.FavouriteHelper
 import com.dicoding.picodiploma.mymoviecatalogue.favourite.FavouriteActivity
 import com.dicoding.picodiploma.mymoviecatalogue.fragment.HomeFragment
 import com.dicoding.picodiploma.mymoviecatalogue.fragment.HomeFragment.Companion.TAB
@@ -19,11 +18,6 @@ import java.io.File
 class MainActivity : AppCompatActivity() {
 
     private lateinit var moviesFragment: MoviesFragment
-    private lateinit var favouriteHelper: FavouriteHelper
-
-    companion object {
-        internal var SEARCH = ""
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,9 +28,6 @@ class MainActivity : AppCompatActivity() {
 
         moviesFragment =
             MoviesFragment()
-
-        favouriteHelper = FavouriteHelper.getInstance(this)
-        favouriteHelper.open()
 
         val mFragmentManager = supportFragmentManager
         val mHomeFragment =
